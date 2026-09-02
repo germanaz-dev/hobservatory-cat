@@ -21,6 +21,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python generate.py
 
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Convert WAV to MP3
         run: |
           ffmpeg -y -i episodes/001/episode.wav \
