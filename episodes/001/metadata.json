@@ -1,0 +1,12 @@
+{
+  "episode": 1,
+  "source_day": 1,
+  "source_title": "Unfinished Architects",
+  "source_url": "https://germanaz-dev.github.io/sonda-h41/",
+  "language": "ca",
+  "tts_model": "gemini-2.5-flash-preview-tts",
+  "voices": {
+    "Laia": "Gacrux",
+    "Marc": "Sulafat"
+  }
+}
