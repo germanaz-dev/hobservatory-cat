@@ -1,0 +1,15 @@
+{
+  "bpm": 58,
+  "root_hz": 73.42,
+  "intervals": [
+    1,
+    1.5,
+    2.25
+  ],
+  "density": 0.22,
+  "brightness": 0.3,
+  "pulse": 0.18,
+  "noise": 0.035,
+  "movement": 0.028,
+  "seed": 41
+}
