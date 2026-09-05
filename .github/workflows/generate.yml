@@ -78,7 +78,7 @@ jobs:
             -i episodes/001/voice.wav \
             -i episodes/001/music.wav \
             -filter_complex \
-            "[1:a]volume=0.35[bed]; \
+            "[1:a]volume=0.40[bed]; \
              [bed][0:a]sidechaincompress=threshold=0.025:ratio=3:attack=40:release=500[ducked]; \
              [0:a][ducked]amix=inputs=2:duration=first:normalize=0, \
              alimiter=limit=0.95[out]" \
