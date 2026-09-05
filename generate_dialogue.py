@@ -92,13 +92,12 @@ que observa a la humanidad durante 365 días.
 
 A continuación tienes sus CUATRO primeras observaciones.
 
-Tu trabajo es convertirlas en una conversación en CASTELLANO entre
-dos hombres que acaban de leerlas.
+Tu trabajo es convertirlas en un resumen y analisis en CASTELLANO
 
-No deben resumir simplemente los textos. utiliza herramientas como (pausa) (suspiro) (tos) (gruñido)
-Deben discutir qué significan.
+No debe resumir simplemente los textos. utiliza herramientas como (pausa) (suspiro) (tos) (gruñido)
+Debe reflexionar sobre la pregunta que se hace la sonda y sus conclusiones en base a lo observado
 
-PERSONAJES
+PERSONAJES (uno presenta al otro y pregunta que ha esta semana, el otro expone y al final, el primero saluda hasta la proxima semana 
 
 JULIÁN:
 
@@ -126,15 +125,14 @@ No está ahí para darle la razón a Julián.
 
 DINÁMICA FUNDAMENTAL
 
-ESTO ES UN DEBATE.
 
-No escribas dos personas reafirmándose mutuamente.
+
+No escribas reafirmándo la conclusion de h41.
 
 Cada uno debe desarrollar una interpretación propia de lo observado
 por H41.
 
-Cuando uno formule una interpretación interesante, el otro debe
-frecuentemente hacer al menos una de estas cosas:
+esta permitido:
 
 - cuestionarla
 - buscar una excepción
@@ -144,23 +142,15 @@ frecuentemente hacer al menos una de estas cosas:
 - decir directamente que no está de acuerdo
 - cambiar el marco de la discusión
 
-EVITA especialmente esta estructura:
-
-A propone una idea.
-B está de acuerdo y la reformula.
-A confirma y la amplía.
-B concluye.
 
 No deben necesitar alcanzar consenso.
 
 Algunas cuestiones deben quedar sin resolver.
 
-Pueden cambiar de opinión durante la conversación, pero solamente
+Puede cambiar de opinión durante la lectura, pero solamente
 cuando exista una razón para hacerlo.
 
 H41 TAMPOCO TIENE RAZÓN POR DEFINICIÓN.
-
-Los personajes pueden cuestionar las interpretaciones de H41.
 
 Pueden preguntarse si una inteligencia observadora está descubriendo
 algo real sobre los humanos o simplemente imponiendo patrones sobre
@@ -176,7 +166,7 @@ No quiero:
 "En el segundo día..."
 "En el tercer día..."
 
-Las observaciones deben mezclarse orgánicamente en la conversación.
+Las observaciones deben relacionarse
 
 Una idea del DAY 004 puede contradecir algo del DAY 001.
 
@@ -203,7 +193,7 @@ del personaje, no como un hecho establecido.
 
 TONO
 
-Conversación inteligente pero cotidiana.
+inteligente pero cotidiana.
 
 Nada de tertulia televisiva.
 
@@ -224,44 +214,9 @@ Nada de:
 "nuestros oyentes"
 "este fascinante tema"
 
-Comienza con H41 ya lleva 4 dias observandonos.
-
-Son dos personas hablando.
-
-INTERACCIONES
-
-Las intervenciones deben ser generalmente cortas:
-una o dos frases.
-
-Ocasionalmente una intervención puede ser más larga cuando alguien
-necesita desarrollar un argumento.
-
-Se permiten:
-
-- preguntas
-- interrupciones naturales
-- desacuerdos
-- dudas
-- ironía ligera
-- respuestas breves
-- cambios de dirección
-
-Expresiones como:
-
-"no"
-"espera"
-"eso no lo veo"
-"¿por qué?"
-"no necesariamente"
-"pero ahí estás suponiendo que..."
-
-pueden aparecer cuando sean naturales.
-
-No abuses de ellas.
+Comienza con "H41 ya lleva 4 dias observandonos..."
 
 DURACIÓN
-
-Objetivo hablado: aproximadamente 3 minutos.
 
 Escribe entre 430 y 500 palabras.
 
@@ -277,8 +232,6 @@ No terminar con:
 "día cuatro"
 "continuará"
 "quedan 361 días"
-
-ni ninguna fórmula de cierre de podcast.
 
 La última intervención debe contener una idea completa.
 
@@ -310,6 +263,8 @@ No añadas notas.
 No añadas instrucciones de interpretación.
 
 No añadas texto antes o después del diálogo.
+
+Ten en cuenta que puede ser usado en un TTS de GEMINI
 
 
 FUENTES H41
