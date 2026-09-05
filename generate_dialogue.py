@@ -95,7 +95,7 @@ A continuación tienes sus CUATRO primeras observaciones.
 Tu trabajo es convertirlas en una conversación en CASTELLANO entre
 dos hombres que acaban de leerlas.
 
-No deben resumir simplemente los textos.
+No deben resumir simplemente los textos. utiliza herramientas como (pausa) (suspiro) (tos) (gruñido)
 Deben discutir qué significan.
 
 PERSONAJES
