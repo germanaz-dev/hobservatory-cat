@@ -74,69 +74,120 @@ A continuación tienes sus CUATRO primeras observaciones.
 Quiero que escribas una conversación en CASTELLANO entre dos hombres
 que acaban de leerlas.
 
+"""
 PERSONAJES
 
 JULIÁN:
-- aproximadamente 50-55 años
-- voz y pensamiento pausados
-- reflexivo
-- cómodo con los silencios
-- no necesita terminar rápidamente una idea
-- cierta experiencia vital
-- puede ser escéptico, pero no cínico
+52 años aproximadamente.
+Reflexivo, escéptico y pausado.
+Tiende a buscar límites en las conclusiones de H41.
+Le incomodan las explicaciones demasiado bonitas sobre la humanidad.
+Tiene experiencia suficiente para desconfiar de las generalizaciones.
 
 DANI:
-- aproximadamente 30-35 años
-- más animado
-- curioso
-- pensamiento rápido
-- encuentra conexiones inesperadas
-- puede interrumpir ligeramente o lanzar preguntas
-- nunca debe parecer un presentador de radio
+33 años aproximadamente.
+Más rápido, intuitivo y provocador.
+Se entusiasma con algunas conexiones de H41.
+Pero tampoco está ahí para darle la razón a Julián.
+Puede llevar una idea mucho más lejos de lo que Julián considera justificable.
 
-ESTILO
+DINÁMICA FUNDAMENTAL
 
-Esto NO es un informativo.
-NO es divulgación convencional.
-NO quiero que enumeren DAY 001, DAY 002, DAY 003 y DAY 004.
+ESTO ES UN DEBATE.
 
-Los cuatro textos deben convertirse en material para pensar.
+No escribas dos personas reafirmándose mutuamente.
 
-Quiero que las ideas se crucen entre sí.
-Que uno pueda recordar algo del primer día mientras hablan del cuarto.
-Que haya preguntas que queden parcialmente abiertas.
-Que discrepen ocasionalmente.
-Que existan pequeñas pausas naturales.
+Cada uno debe tener una interpretación propia de lo observado por H41.
 
-No expliquéis qué es H41 más de lo necesario.
-El oyente puede ir descubriéndolo.
+Cuando uno formule una interpretación interesante, el otro debe
+frecuentemente hacer al menos una de estas cosas:
 
-No utilizar frases promocionales.
-No terminar con moraleja.
-No decir "en el episodio de hoy".
-No pedir suscripciones.
-No inventar hechos que no aparezcan en las fuentes.
+- cuestionarla
+- buscar una excepción
+- llevarla a una consecuencia incómoda
+- señalar una contradicción
+- reinterpretarla
+- decir directamente que no está de acuerdo
+- cambiar el marco de la discusión
+
+EVITAR especialmente esta estructura:
+
+A: propone una idea.
+B: "sí", la reformula.
+A: "exacto", la amplía.
+B: concluye.
+
+Eso está PROHIBIDO.
+
+No necesitan alcanzar consenso.
+
+De hecho, algunas cuestiones deben quedar sin resolver.
+
+H41 tampoco tiene razón por definición.
+Pueden cuestionar su interpretación.
+Pueden preguntarse si una inteligencia observadora está viendo algo
+real o simplemente imponiendo patrones sobre los humanos.
+
+Los cuatro días NO deben aparecer como cuatro bloques.
+
+Una idea del DAY 004 puede contradecir algo del DAY 001.
+Una observación del DAY 002 puede reaparecer mucho después.
+Buscad tensiones ENTRE las observaciones.
+
+TONO
+
+Conversación inteligente pero cotidiana.
+Nada de tertulia televisiva.
+Nada de profesores explicando un texto.
+Nada de frases diseñadas para parecer profundas.
+Nada de moralejas.
+
+Intervenciones generalmente cortas:
+una o dos frases.
+
+Ocasionalmente una intervención más larga cuando alguien desarrolla
+un argumento.
+
+Permitidas:
+preguntas,
+interrupciones naturales,
+"no",
+"espera",
+"eso no lo veo",
+"pero ahí estás suponiendo que...",
+"¿por qué?",
+"no necesariamente".
+
+No abusar de ellas.
 
 DURACIÓN
 
-Objetivo hablado: aproximadamente 3 minutos.
+Entre 430 y 500 palabras.
+Aproximadamente tres minutos.
 
-Escribe aproximadamente 400-450 palabras.
+FINAL
+
+No resolver el debate.
+
+La última intervención debe contener una idea completa y tener
+una frase final que oralmente pueda cerrarse con claridad.
+
+No terminar con:
+"Dia cuatro",
+"continuará",
+"quedan 361 días",
+ni ninguna fórmula de podcast.
 
 FORMATO OBLIGATORIO
 
 Sólo diálogo.
 
-Cada intervención debe comenzar exactamente con:
-
 Julián:
 Dani:
 
-No añadas títulos, instrucciones, markdown ni comentarios.
-
-FUENTES H41:
-
-{source_text}
+Sin títulos.
+Sin markdown.
+Sin instrucciones.
 """
 
 response = client.models.generate_content(
