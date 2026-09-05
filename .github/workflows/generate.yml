@@ -4,50 +4,87 @@ on:
   workflow_dispatch:
 
 jobs:
-
   generate:
-
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout
+      # ------------------------------------------------
+      # REPOSITORY
+      # ------------------------------------------------
+
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Python
+
+      # ------------------------------------------------
+      # PYTHON
+      # ------------------------------------------------
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+
+      # ------------------------------------------------
+      # FFMPEG
+      # ------------------------------------------------
 
       - name: Install ffmpeg
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      # ---------------------------
-      # 1. H41 → diálogo
-      # ---------------------------
 
-      - name: Generate dialogue from H41 days 001-004
+      # ------------------------------------------------
+      # CHECK FILES + PYTHON SYNTAX
+      # ------------------------------------------------
+
+      - name: Check HOP signature exists
+        run: |
+          test -f HOP_signature_concept3_signal_engine.wav
+          echo "HOP signature found."
+
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile generate_dialogue.py
+          python -m py_compile generate_tts.py
+          python -m py_compile generate_music.py
+
+
+      # ------------------------------------------------
+      # H41 DAYS 001-004 -> DIALOGUE
+      # ------------------------------------------------
+
+      - name: Generate dialogue
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python generate_dialogue.py
+        run: |
+          python generate_dialogue.py
 
-      # ---------------------------
-      # 2. diálogo → voces
-      # ---------------------------
+
+      # ------------------------------------------------
+      # DIALOGUE -> TWO VOICES
+      # ------------------------------------------------
 
       - name: Generate voices
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python generate_tts.py
+        run: |
+          python generate_tts.py
 
-      # ---------------------------
-      # 3. medir duración
-      # ---------------------------
+
+      # ------------------------------------------------
+      # MEASURE VOICE DURATION
+      # ------------------------------------------------
 
       - name: Measure voice duration
         run: |
@@ -58,19 +95,24 @@ jobs:
             episodes/001/voice.wav)
 
           echo "AUDIO_DURATION=$DURATION" >> "$GITHUB_ENV"
-
           echo "Voice duration: $DURATION seconds"
 
-      # ---------------------------
-      # 4. generar paisaje sonoro
-      # ---------------------------
+
+      # ------------------------------------------------
+      # PROCEDURAL SOUND BED
+      # ------------------------------------------------
 
       - name: Generate procedural music
-        run: python generate_music.py
+        run: |
+          python generate_music.py
 
-      # ---------------------------
-      # 5. mezclar conversación
-      # ---------------------------
+
+      # ------------------------------------------------
+      # VOICE + SOUND BED
+      #
+      # Bed intentionally louder than previous version.
+      # Sidechain compression ducks it while people speak.
+      # ------------------------------------------------
 
       - name: Mix voices and procedural bed
         run: |
@@ -78,16 +120,22 @@ jobs:
             -i episodes/001/voice.wav \
             -i episodes/001/music.wav \
             -filter_complex \
-            "[1:a]volume=0.40[bed]; \
-             [bed][0:a]sidechaincompress=threshold=0.025:ratio=3:attack=40:release=500[ducked]; \
-             [0:a][ducked]amix=inputs=2:duration=first:normalize=0, \
-             alimiter=limit=0.95[out]" \
-            -map "[out]" \
+            "[1:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,volume=0.35[bed]; \
+             [0:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono[voice]; \
+             [bed][voice]sidechaincompress=threshold=0.025:ratio=3:attack=40:release=500[ducked]; \
+             [voice][ducked]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[body]" \
+            -map "[body]" \
+            -ar 44100 \
+            -ac 1 \
             episodes/001/body.wav
 
-      # ---------------------------
-      # 6. INTRO HOP + conversación
-      # ---------------------------
+
+      # ------------------------------------------------
+      # HOP SIGNATURE + BODY
+      #
+      # Signature plays first on its own.
+      # Then conversation + procedural bed.
+      # ------------------------------------------------
 
       - name: Add HOP signature
         run: |
@@ -95,24 +143,41 @@ jobs:
             -i HOP_signature_concept3_signal_engine.wav \
             -i episodes/001/body.wav \
             -filter_complex \
-            "[0:a]aresample=44100, \
-             aformat=sample_fmts=fltp:channel_layouts=mono[intro]; \
-             [1:a]aresample=44100, \
-             aformat=sample_fmts=fltp:channel_layouts=mono[body]; \
+            "[0:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono[intro]; \
+             [1:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono[body]; \
              [intro][body]concat=n=2:v=0:a=1[out]" \
             -map "[out]" \
             -codec:a libmp3lame \
             -b:a 192k \
             episodes/001/episode.mp3
 
-      # ---------------------------
-      # 7. artifact
-      # ---------------------------
 
-      - name: Upload episode
+      # ------------------------------------------------
+      # INFORMATION
+      # ------------------------------------------------
+
+      - name: Show generated files
+        run: |
+          echo "Generated files:"
+          ls -lh episodes/001/
+
+          echo ""
+          echo "Final duration:"
+          ffprobe \
+            -v error \
+            -show_entries format=duration \
+            -of default=nw=1:nk=1 \
+            episodes/001/episode.mp3
+
+
+      # ------------------------------------------------
+      # ARTIFACT
+      # ------------------------------------------------
+
+      - name: Upload episode artifact
         uses: actions/upload-artifact@v4
         with:
-          name: h41-days-001-004
+          name: h41-podcast-days-001-004
           path: |
             episodes/001/episode.mp3
             episodes/001/body.wav
@@ -121,3 +186,4 @@ jobs:
             episodes/001/script.txt
             episodes/001/source.txt
             episodes/001/music.json
+          if-no-files-found: error
