@@ -113,22 +113,21 @@ jobs:
       # Bed intentionally louder than previous version.
       # Sidechain compression ducks it while people speak.
       # ------------------------------------------------
-
+      
       - name: Mix voices and procedural bed
         run: |
           ffmpeg -y \
             -i episodes/001/voice.wav \
             -i episodes/001/music.wav \
             -filter_complex \
-            "[1:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,volume=0.35[bed]; \
-             [0:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono[voice]; \
-             [bed][voice]sidechaincompress=threshold=0.025:ratio=3:attack=40:release=500[ducked]; \
-             [voice][ducked]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[body]" \
+            "[0:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,asplit=2[voice_mix][voice_sc]; \
+             [1:a]aresample=44100,aformat=sample_fmts=fltp:channel_layouts=mono,volume=0.35[bed]; \
+             [bed][voice_sc]sidechaincompress=threshold=0.025:ratio=3:attack=40:release=500[ducked]; \
+             [voice_mix][ducked]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[body]" \
             -map "[body]" \
             -ar 44100 \
             -ac 1 \
             episodes/001/body.wav
-
 
       # ------------------------------------------------
       # HOP SIGNATURE + BODY
