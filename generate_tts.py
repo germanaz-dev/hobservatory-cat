@@ -59,15 +59,14 @@ ESCENA
 Dos hombres están sentados hablando después de haber leído cuatro
 observaciones extrañas sobre la humanidad.
 
-No están grabando un programa de radio.
-No están presentando nada.
+están grabando un programa de radio.
 Están discutiendo.
 
 A veces uno piensa que el otro está equivocado.
 Una pregunta puede incomodar.
 Una respuesta puede ser seca.
 Puede haber pequeñas risas, dudas, respiraciones y pausas.
-No sobreactuar.
+No sobreactuar. Ritmo suave pero que no duerma al oyente. 
 
 DIRECCIÓN
 
