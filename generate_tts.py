@@ -5,6 +5,24 @@ from pathlib import Path
 from google import genai
 from google.genai import types
 
+types.SpeakerVoiceConfig(
+    speaker="Julián",
+    voice_config=types.VoiceConfig(
+        prebuilt_voice_config=types.PrebuiltVoiceConfig(
+            voice_name="Algenib"
+        )
+    ),
+),
+
+types.SpeakerVoiceConfig(
+    speaker="Dani",
+    voice_config=types.VoiceConfig(
+        prebuilt_voice_config=types.PrebuiltVoiceConfig(
+            voice_name="Orus"
+        )
+    ),
+),
+
 ROOT = Path(__file__).parent
 EP = ROOT / "episodes/001"
 
@@ -19,29 +37,54 @@ client = genai.Client(
 prompt = f"""
 Interpreta esta conversación en castellano de España.
 
-Son dos hombres conversando después de haber leído las primeras
-observaciones de H41.
+PERFIL DE AUDIO
 
-Julián:
-hombre de unos 50-55 años.
-Voz madura.
-Habla despacio.
-Pausas naturales.
-Reflexivo.
-Nunca suena como locutor.
-No dramatiza.
+Julián es un HOMBRE de unos 52 años.
+Voz masculina madura, grave, algo áspera.
+Habla despacio y con seguridad.
+Piensa mientras habla.
+A veces deja una pequeña pausa antes de responder.
+No es solemne ni radiofónico.
+Cuando discrepa, no eleva necesariamente la voz: se vuelve más preciso.
 
-Dani:
-hombre de unos 30-35 años.
-Más vivo y espontáneo.
-Habla algo más rápido.
-Curioso.
-Puede reaccionar con sorpresa o ironía ligera.
-Tampoco es locutor.
+Dani es un HOMBRE de unos 33 años.
+Voz inequívocamente masculina, adulta y más joven que Julián.
+Más energía y velocidad.
+Más reactivo, inquisitivo y espontáneo.
+Puede mostrar incredulidad, ironía o entusiasmo.
+No es alegre por defecto y NO suena como presentador.
 
-La conversación debe sentirse cercana y real.
-Deja respirar algunas frases.
-No leas los nombres de los personajes.
+ESCENA
+
+Dos hombres están sentados hablando después de haber leído cuatro
+observaciones extrañas sobre la humanidad.
+
+No están grabando un programa de radio.
+No están presentando nada.
+Están discutiendo.
+
+A veces uno piensa que el otro está equivocado.
+Una pregunta puede incomodar.
+Una respuesta puede ser seca.
+Puede haber pequeñas risas, dudas, respiraciones y pausas.
+No sobreactuar.
+
+DIRECCIÓN
+
+No leer los nombres de los personajes.
+
+No mantener una entonación uniforme.
+Las preguntas deben sonar realmente como preguntas.
+Las objeciones deben sonar como objeciones.
+Las frases sorprendentes pueden tener énfasis.
+Las frases reflexivas pueden desacelerarse.
+
+MUY IMPORTANTE:
+la última intervención NO debe sonar como una frase cortada ni como
+texto que simplemente se termina.
+Debe tener una cadencia final clara, natural y deliberada.
+La última palabra debe recibir la entonación necesaria para cerrar
+la conversación.
 
 Transcripción:
 
